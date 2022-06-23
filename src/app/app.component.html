@@ -1,0 +1,66 @@
+<hello name="{{ name }}"></hello>
+
+<div class="register-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Start editing to see some magic happen :)</p>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="m-2">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="fname"
+              [ngClass]="{ 'is-invalid': Submitted && f.fname.errors }"
+            />
+            <div *ngIf="Submitted && f.fname.errors">
+              <p *ngIf="f.fname.errors.required" class="text-danger">
+                Firstname is Required
+              </p>
+              <p *ngIf="f.fname.errors.minlength" class="text-danger">
+                Minimum Length Should Be 4 Characaters
+              </p>
+              <p *ngIf="f.fname.errors.maxlength" class="text-danger">
+                Maximum Length Should Be 30 Characaters
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="m-2">Lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lname"
+              [ngClass]="{ 'is-invalid': Submitted && f.lname.errors }"
+            />
+            <div *ngIf="Submitted && f.lname.errors.required">
+              <p *ngIf="f.lname.errors.required" class="text-danger">
+                Lastname is Required
+              </p>
+              <p *ngIf="f.lname.errors.minlength" class="text-danger">
+                Minimum Length Should Be 4 Characaters
+              </p>
+              <p *ngIf="f.lname.errors.maxlength" class="text-danger">
+                Maximum Length Should Be 30 Characaters
+              </p>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-success mt-3">Submit</button>
+
+            <button
+              type="button"
+              (click)="onReset()"
+              class="btn btn-warning mt-3 mx-3"
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
